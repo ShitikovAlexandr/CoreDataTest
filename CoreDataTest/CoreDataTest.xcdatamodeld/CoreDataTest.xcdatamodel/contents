@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10147" systemVersion="15D21" minimumToolsVersion="Automatic">
+    <entity name="ASObject" representedClassName="ASObject" syncable="YES"/>
+    <entity name="Car" representedClassName="Car" parentEntity="ASObject" syncable="YES">
+        <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="car" inverseEntity="Student" syncable="YES"/>
+    </entity>
+    <entity name="Course" representedClassName="Course" parentEntity="ASObject" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="courses" inverseEntity="Student" syncable="YES"/>
+        <relationship name="university" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="University" inverseName="courses" inverseEntity="University" syncable="YES"/>
+    </entity>
+    <entity name="Student" representedClassName="Student" parentEntity="ASObject" syncable="YES">
+        <attribute name="dateOfBirth" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="car" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Car" inverseName="owner" inverseEntity="Car" syncable="YES"/>
+        <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="students" inverseEntity="Course" syncable="YES"/>
+        <relationship name="university" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="University" inverseName="studentd" inverseEntity="University" syncable="YES"/>
+    </entity>
+    <entity name="University" representedClassName="University" parentEntity="ASObject" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="courses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Course" inverseName="university" inverseEntity="Course" syncable="YES"/>
+        <relationship name="studentd" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Student" inverseName="university" inverseEntity="Student" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ASObject" positionX="-3087" positionY="-2844" width="128" height="43"/>
+        <element name="Car" positionX="-2871" positionY="-2700" width="128" height="73"/>
+        <element name="Course" positionX="-3377" positionY="-2572" width="128" height="88"/>
+        <element name="Student" positionX="-3105" positionY="-2632" width="173" height="148"/>
+        <element name="University" positionX="-3278" positionY="-2788" width="128" height="88"/>
+    </elements>
+</model>
